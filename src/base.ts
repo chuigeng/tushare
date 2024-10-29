@@ -1,4 +1,5 @@
 import axios from "axios";
+import { TushareError } from "./error";
 /**
  * 基类，封装 Tushare 的接口标准
  */
@@ -35,7 +36,7 @@ export default abstract class API {
     };
 
     if (code !== 0) {
-      throw new Error(`Tushare request failed with code ${code}: ${msg}`);
+      throw new TushareError(code, msg);
     }
 
     const itemFields = data?.fields ?? [];
