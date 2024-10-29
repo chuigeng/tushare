@@ -43,6 +43,6 @@
     // 库配置
     "lib": ["ES2020"]
   },
-  "include": ["src/**/*", "__tests__/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

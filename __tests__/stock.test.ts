@@ -1,3 +1,4 @@
+import { describe, expect, it } from "@jest/globals";
 import { config } from "dotenv";
 import TuShare from "../src";
 

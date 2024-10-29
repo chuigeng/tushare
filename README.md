@@ -47,6 +47,10 @@ const values = await tushare.index.basic({
 
 ## 安装
 
+`npm install @chuigeng/tushare`
+
+或者
+
 `pnpm install @chuigeng/tushare`
 
 ## 一些说明
@@ -69,4 +73,5 @@ const values = await tushare.index.basic({
 测试用例在 `__tests__` 目录下。
 
 执行所有测试用例：`npm test`
+
 执行指定测试用例：`npm test -- __tests__/index.test.ts -t "index_daily"`
