@@ -6,10 +6,6 @@ import { StockBasicParams, StockBasicResponse } from "./type";
  * 股票
  */
 export class Stock extends API {
-  constructor(token: string) {
-    super(token);
-  }
-
   /**
    * stock_basic
    * https://tushare.pro/document/2?doc_id=25

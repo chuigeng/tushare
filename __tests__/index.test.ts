@@ -5,7 +5,7 @@ import TuShare from "../src";
 config();
 
 const token = process.env.TUSHARE_TOKEN ?? "";
-const tushare = new TuShare(token);
+const tushare = new TuShare(token, 200);
 
 describe("index", () => {
   it("index_basic", async () => {
@@ -29,7 +29,11 @@ describe("index", () => {
   });
 
   it("index_daily", async () => {
-    const values = await tushare.index.daily({ ts_code: "000120.SH" });
+    const values = await tushare.index.daily({
+      ts_code: "399396.SZ",
+      start_date: "20250101",
+      end_date: "20250205",
+    });
     expect(values.length).toBeGreaterThan(0);
   });
 
@@ -44,7 +48,7 @@ describe("index", () => {
   });
 
   it("index_weight", async () => {
-    const values = await tushare.index.weight({ index_code: "000120.SH" });
+    const values = await tushare.index.weight({ index_code: "399989.SZ" });
     expect(values.length).toBeGreaterThan(0);
   });
 

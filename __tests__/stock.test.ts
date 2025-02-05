@@ -8,7 +8,7 @@ const token = process.env.TUSHARE_TOKEN ?? "";
 
 describe("stock", () => {
   it("stock_basic", async () => {
-    const tushare = new TuShare(token);
+    const tushare = new TuShare(token, 200);
     const values = await tushare.stock.basic();
     expect(values.length).toBeGreaterThan(0);
   });

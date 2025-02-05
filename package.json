@@ -1,5 +1,5 @@
 {
-  "name": "@chuigeng/tushare",
+  "name": "@chuizii/tushare",
   "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,7 +29,8 @@
   "license": "ISC",
   "description": "A typescript lib to call tushare api",
   "dependencies": {
-    "axios": "^1.7.7"
+    "axios": "^1.7.7",
+    "bottleneck": "^2.19.5"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

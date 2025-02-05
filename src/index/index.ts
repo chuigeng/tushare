@@ -39,10 +39,6 @@ import {
  * 指数
  */
 export class Index extends API {
-  constructor(token: string) {
-    super(token);
-  }
-
   /**
    * index_basic
    * https://tushare.pro/document/2?doc_id=94
