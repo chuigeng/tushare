@@ -48,7 +48,14 @@ describe("index", () => {
   });
 
   it("index_weight", async () => {
-    const values = await tushare.index.weight({ index_code: "399989.SZ" });
+    console.log("params: index_code: 000852.SH, start_date: 20150201, end_date: 20150228");
+    const values = await tushare.index.weight({
+      index_code: "000852.SH",
+      start_date: "20150201",
+      end_date: "20150228",
+    });
+    console.log("number of constituents: " + values.length);
+
     expect(values.length).toBeGreaterThan(0);
   });
 
