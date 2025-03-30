@@ -30,9 +30,9 @@ export interface StockBasicResponse {
 
 // daily_basic
 export interface StockDailyBasicParams {
-  /** 股票代码（二选一） */
-  ts_code: string;
-  /** 交易日期（二选一） */
+  /** 股票代码（ts_code和trade_date必须二选一） */
+  ts_code?: string;
+  /** 交易日期（ts_code和trade_date必须二选一） */
   trade_date?: string;
   /** 开始日期(YYYYMMDD) */
   start_date?: string;
