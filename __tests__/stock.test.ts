@@ -32,7 +32,17 @@ describe("stock", () => {
       start_date: "20250303",
       end_date: "20250304",
     });
-    console.log(values.slice(0, 10));
+    expect(values.length).toBeGreaterThan(0);
+  });
+
+  it("financial_indicator", async () => {
+    const tushare = new TuShare(token, 200);
+    const values = await tushare.stock.financialIndicator({
+      ts_code: "600000.SH",
+      start_date: "20180101",
+      end_date: "20181231",
+    });
+    console.log(values);
     expect(values.length).toBeGreaterThan(0);
   });
 });
