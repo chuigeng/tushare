@@ -85,12 +85,14 @@ export interface FinancialIndicatorParams {
   ts_code?: string;
   /** 公告日期，YYYYMMDD */
   ann_date?: string;
-  /** 报告期，YYYYMMDD（例如 20240630） */
+  /** 报告期，每个季度的最后一天，YYYYMMDD（例如 20240630） */
   period?: string;
   /** 开始日期(YYYYMMDD) */
   start_date?: string;
   /** 结束日期(YYYYMMDD) */
   end_date?: string;
+  /** 更新标识 */
+  update_flag?: string;
 }
 
 export interface FinancialIndicatorResponse {

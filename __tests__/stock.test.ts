@@ -37,11 +37,15 @@ describe("stock", () => {
 
   it("financial_indicator", async () => {
     const tushare = new TuShare(token, 200);
-    const values = await tushare.stock.financialIndicator({
-      ts_code: "600000.SH",
-      start_date: "20180101",
-      end_date: "20181231",
-    });
+    const values = await tushare.stock.financialIndicator(
+      {
+        ts_code: "002126.SZ",
+        start_date: "20250331",
+        end_date: "20250630",
+        update_flag: "1",
+      },
+      ["ts_code", "ann_date", "end_date", "eps", "dt_eps", "q_eps", "update_flag"]
+    );
     console.log(values);
     expect(values.length).toBeGreaterThan(0);
   });
