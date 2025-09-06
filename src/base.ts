@@ -42,6 +42,19 @@ export default abstract class API {
         data?: { fields: string[]; items: any[][] };
       };
 
+      // 当触发 Tushare 限流（code=40203）时，直接耗尽令牌桶，
+      // 使后续请求必须等待下次令牌补充
+      if (code == 40203) {
+        try {
+          const current = await this.limiter.currentReservoir();
+          if (typeof current === "number" && current > 0) {
+            await this.limiter.incrementReservoir(-current);
+          }
+        } catch (_) {
+          // 忽略限流器调整失败
+        }
+      }
+
       if (code !== 0) {
         throw new TushareError(code, msg);
       }
