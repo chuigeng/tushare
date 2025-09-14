@@ -3,6 +3,8 @@ import { SelectiveResponse } from "../type";
 import {
   FinancialIndicatorParams,
   FinancialIndicatorResponse,
+  IncomeParams,
+  IncomeResponse,
   StockBasicParams,
   StockBasicResponse,
   StockDailyBasicParams,
@@ -55,5 +57,20 @@ export class Stock extends API {
       FinancialIndicatorParams,
       SelectiveResponse<K, FinancialIndicatorResponse>
     >("fina_indicator", params, fields);
+  }
+
+  /**
+   * income 利润表
+   * https://tushare.pro/document/2?doc_id=33
+   */
+  public async income<K extends keyof IncomeResponse>(
+    params?: IncomeParams,
+    fields?: Array<keyof IncomeResponse>
+  ): Promise<SelectiveResponse<K, IncomeResponse>[]> {
+    return await this.get<IncomeParams, SelectiveResponse<K, IncomeResponse>>(
+      "income",
+      params,
+      fields
+    );
   }
 }
