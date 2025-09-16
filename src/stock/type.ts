@@ -429,7 +429,7 @@ export interface FinancialIndicatorResponse {
   /** 研发费用 */
   rd_exp?: number;
   /** 更新标识 */
-  update_flag?: string;
+  update_flag: string;
 }
 
 // income 利润表
