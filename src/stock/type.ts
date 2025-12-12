@@ -28,6 +28,28 @@ export interface StockBasicResponse {
   act_ent_type: string;
 }
 
+// daily
+export interface StockDailyParams {
+  ts_code?: string;
+  trade_date?: string;
+  start_date?: string;
+  end_date?: string;
+}
+
+export interface StockDailyResponse {
+  ts_code: string;
+  trade_date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  pre_close: number;
+  change: number;
+  pct_chg: number;
+  vol: number;
+  amount: number;
+}
+
 // daily_basic
 export interface StockDailyBasicParams {
   /** 股票代码（ts_code和trade_date必须二选一） */

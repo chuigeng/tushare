@@ -36,6 +36,20 @@ describe("stock", () => {
     expect(values.length).toBeGreaterThan(0);
   });
 
+  it("daily", async () => {
+    const tushare = new TuShare(token, 200);
+    const values = await tushare.stock.daily({
+      ts_code: "000001.SZ",
+      start_date: "20180701",
+      end_date: "20180718",
+    });
+    console.log(values);
+    expect(values.length).toBeGreaterThan(0);
+    expect(values[0]).toHaveProperty("ts_code");
+    expect(values[0]).toHaveProperty("open");
+    expect(values[0]).toHaveProperty("close");
+  });
+
   it("financial_indicator", async () => {
     const tushare = new TuShare(token, 200);
     const values = await tushare.stock.financialIndicator(

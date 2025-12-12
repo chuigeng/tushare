@@ -9,6 +9,8 @@ import {
   StockBasicResponse,
   StockDailyBasicParams,
   StockDailyBasicResponse,
+  StockDailyParams,
+  StockDailyResponse,
 } from "./type";
 
 /**
@@ -25,6 +27,21 @@ export class Stock extends API {
   ): Promise<SelectiveResponse<K, StockBasicResponse>[]> {
     return await this.get<StockBasicParams, SelectiveResponse<K, StockBasicResponse>>(
       "stock_basic",
+      params,
+      fields
+    );
+  }
+
+  /**
+   * daily A股日线行情
+   * https://tushare.pro/document/2?doc_id=27
+   */
+  public async daily<K extends keyof StockDailyResponse>(
+    params?: StockDailyParams,
+    fields?: Array<keyof StockDailyResponse>
+  ): Promise<SelectiveResponse<K, StockDailyResponse>[]> {
+    return await this.get<StockDailyParams, SelectiveResponse<K, StockDailyResponse>>(
+      "daily",
       params,
       fields
     );
