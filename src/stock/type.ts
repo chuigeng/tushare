@@ -664,3 +664,17 @@ export interface IncomeResponse {
   /** 更新标识 */
   update_flag: string;
 }
+
+// adj_factor
+export interface StockAdjFactorParams {
+  ts_code?: string;
+  trade_date?: string;
+  start_date?: string;
+  end_date?: string;
+}
+
+export interface StockAdjFactorResponse {
+  ts_code: string;
+  trade_date: string;
+  adj_factor: number;
+}

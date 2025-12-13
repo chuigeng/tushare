@@ -29,10 +29,9 @@ describe("stock", () => {
     const tushare = new TuShare(token, 200);
     const values = await tushare.stock.dailyBasic({
       ts_code: "002126.SZ",
-      start_date: "20250101",
-      end_date: "20250901",
     });
-    console.log(values);
+    console.log(values[0]);
+    console.log(values[values.length - 1]);
     expect(values.length).toBeGreaterThan(0);
   });
 
@@ -40,10 +39,11 @@ describe("stock", () => {
     const tushare = new TuShare(token, 200);
     const values = await tushare.stock.daily({
       ts_code: "000001.SZ",
-      start_date: "20180701",
-      end_date: "20180718",
+      // start_date: "20180701",
+      end_date: "20000721",
     });
-    console.log(values);
+    console.log(values[0]);
+    console.log(values[values.length - 1]);
     expect(values.length).toBeGreaterThan(0);
     expect(values[0]).toHaveProperty("ts_code");
     expect(values[0]).toHaveProperty("open");
@@ -63,6 +63,19 @@ describe("stock", () => {
     );
     console.log(values);
     expect(values.length).toBeGreaterThan(0);
+  });
+
+  it("adj_factor", async () => {
+    const tushare = new TuShare(token, 200);
+    const values = await tushare.stock.adjFactor({
+      ts_code: "000001.SZ",
+      start_date: "20180718",
+      end_date: "20250718",
+    });
+    console.log(values);
+    expect(values.length).toBeGreaterThan(0);
+    expect(values[0]).toHaveProperty("ts_code");
+    expect(values[0]).toHaveProperty("adj_factor");
   });
 
   it("income", async () => {

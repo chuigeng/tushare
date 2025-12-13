@@ -5,6 +5,8 @@ import {
   FinancialIndicatorResponse,
   IncomeParams,
   IncomeResponse,
+  StockAdjFactorParams,
+  StockAdjFactorResponse,
   StockBasicParams,
   StockBasicResponse,
   StockDailyBasicParams,
@@ -86,6 +88,22 @@ export class Stock extends API {
   ): Promise<SelectiveResponse<K, IncomeResponse>[]> {
     return await this.get<IncomeParams, SelectiveResponse<K, IncomeResponse>>(
       "income",
+      params,
+      fields
+    );
+  }
+
+
+  /**
+   * adj_factor 复权因子
+   * https://tushare.pro/document/2?doc_id=28
+   */
+  public async adjFactor<K extends keyof StockAdjFactorResponse>(
+    params?: StockAdjFactorParams,
+    fields?: Array<keyof StockAdjFactorResponse>
+  ): Promise<SelectiveResponse<K, StockAdjFactorResponse>[]> {
+    return await this.get<StockAdjFactorParams, SelectiveResponse<K, StockAdjFactorResponse>>(
+      "adj_factor",
       params,
       fields
     );
