@@ -678,3 +678,19 @@ export interface StockAdjFactorResponse {
   trade_date: string;
   adj_factor: number;
 }
+
+// stk_limit
+export interface StockLimitParams {
+  ts_code?: string;
+  trade_date?: string;
+  start_date?: string;
+  end_date?: string;
+}
+
+export interface StockLimitResponse {
+  trade_date: string;
+  ts_code: string;
+  up_limit: number;
+  down_limit: number;
+}
+

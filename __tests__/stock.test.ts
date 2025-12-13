@@ -78,6 +78,20 @@ describe("stock", () => {
     expect(values[0]).toHaveProperty("adj_factor");
   });
 
+  it("stk_limit", async () => {
+    const tushare = new TuShare(token, 200);
+    const values = await tushare.stock.limit({
+      ts_code: "000001.SZ",
+      start_date: "20190615",
+      end_date: "20190625",
+    });
+    console.log(values);
+    expect(values.length).toBeGreaterThan(0);
+    expect(values[0]).toHaveProperty("ts_code");
+    expect(values[0]).toHaveProperty("up_limit");
+    expect(values[0]).toHaveProperty("down_limit");
+  });
+
   it("income", async () => {
     const tushare = new TuShare(token, 200);
     const values = await tushare.stock.income(

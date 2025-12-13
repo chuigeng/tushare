@@ -1,18 +1,20 @@
 import API from "../base";
 import { SelectiveResponse } from "../type";
 import {
-  FinancialIndicatorParams,
-  FinancialIndicatorResponse,
-  IncomeParams,
-  IncomeResponse,
-  StockAdjFactorParams,
-  StockAdjFactorResponse,
-  StockBasicParams,
-  StockBasicResponse,
-  StockDailyBasicParams,
-  StockDailyBasicResponse,
-  StockDailyParams,
-  StockDailyResponse,
+    FinancialIndicatorParams,
+    FinancialIndicatorResponse,
+    IncomeParams,
+    IncomeResponse,
+    StockAdjFactorParams,
+    StockAdjFactorResponse,
+    StockBasicParams,
+    StockBasicResponse,
+    StockDailyBasicParams,
+    StockDailyBasicResponse,
+    StockDailyParams,
+    StockDailyResponse,
+    StockLimitParams,
+    StockLimitResponse,
 } from "./type";
 
 /**
@@ -104,6 +106,21 @@ export class Stock extends API {
   ): Promise<SelectiveResponse<K, StockAdjFactorResponse>[]> {
     return await this.get<StockAdjFactorParams, SelectiveResponse<K, StockAdjFactorResponse>>(
       "adj_factor",
+      params,
+      fields
+    );
+  }
+
+  /**
+   * stk_limit 每日涨跌停价格
+   * https://tushare.pro/document/2?doc_id=183
+   */
+  public async limit<K extends keyof StockLimitResponse>(
+    params?: StockLimitParams,
+    fields?: Array<keyof StockLimitResponse>
+  ): Promise<SelectiveResponse<K, StockLimitResponse>[]> {
+    return await this.get<StockLimitParams, SelectiveResponse<K, StockLimitResponse>>(
+      "stk_limit",
       params,
       fields
     );
