@@ -16,12 +16,12 @@ export default class TuShare {
       // 同时只处理 1 个请求
       maxConcurrent: 1,
       // 初始令牌数量
-      reservoir: requestsPerMin,
+      reservoir: 1,
       // 每隔 (60s / requestsPerMin) 补充 1 个令牌，实现平滑限流
       reservoirIncreaseInterval: Math.ceil((60 * 1000) / requestsPerMin),
       reservoirIncreaseAmount: 1,
       // 令牌上限，防止空闲时累积过多
-      reservoirIncreaseMaximum: requestsPerMin,
+      reservoirIncreaseMaximum: 1,
       // 如果配额不足，则阻塞等待
       strategy: Bottleneck.strategy.BLOCK,
     });
