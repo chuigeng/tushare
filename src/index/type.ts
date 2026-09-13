@@ -1,6 +1,7 @@
 // index_basic
 export interface IndexBasicParams {
   ts_code?: string;
+  symbol?: string;
   name?: string;
   market?: string;
   publisher?: string;
