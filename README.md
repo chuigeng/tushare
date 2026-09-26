@@ -67,6 +67,7 @@ const values = await tushare.index.basic({
 由于 Tushare 接口众多，前期只封装了我自己需要的接口，其余接口逐步完善。以下是已封装好的 API
 
 - [指数](https://tushare.pro/document/2?doc_id=93)
+- ETF：基础信息、每日份额规模、日线行情
 
 ### 测试用例
 

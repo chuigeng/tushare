@@ -1,12 +1,17 @@
 import Bottleneck from "bottleneck";
+import { Fund } from "./fund";
 import { Index } from "./index/index";
 import { Stock } from "./stock";
+
+export * from "./fund";
 
 export default class TuShare {
   // 指数
   public index;
   // 股票
   public stock;
+  // 基金与 ETF
+  public fund;
 
   constructor(token: string, requestsPerMin: number) {
     // 平滑地限制每分钟请求次数
@@ -27,5 +32,6 @@ export default class TuShare {
     });
     this.index = new Index(token, limiter);
     this.stock = new Stock(token, limiter);
+    this.fund = new Fund(token, limiter);
   }
 }
