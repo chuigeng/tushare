@@ -1,11 +1,14 @@
 import Bottleneck from "bottleneck";
+import { Calendar } from "./calendar";
 import { Fund } from "./fund";
 import { Index } from "./index/index";
 import { Stock } from "./stock";
 
 export * from "./fund";
+export * from "./calendar";
 
 export default class TuShare {
+  public calendar: Calendar;
   // 指数
   public index;
   // 股票
@@ -33,5 +36,6 @@ export default class TuShare {
     this.index = new Index(token, limiter);
     this.stock = new Stock(token, limiter);
     this.fund = new Fund(token, limiter);
+    this.calendar = new Calendar(token, limiter);
   }
 }

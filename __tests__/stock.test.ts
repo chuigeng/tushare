@@ -50,6 +50,20 @@ describe("stock", () => {
     expect(values[0]).toHaveProperty("close");
   });
 
+  it("moneyflow", async () => {
+    const tushare = new TuShare(token, 40);
+    const values = await tushare.stock.moneyflow({ trade_date: "20240930" }, [
+      "ts_code",
+      "trade_date",
+      "buy_lg_amount",
+      "sell_lg_amount",
+      "net_mf_amount",
+    ]);
+    expect(values.length).toBeGreaterThan(0);
+    expect(values[0]).toHaveProperty("ts_code");
+    expect(values[0]).toHaveProperty("net_mf_amount");
+  });
+
   it("financial_indicator", async () => {
     const tushare = new TuShare(token, 200);
     const values = await tushare.stock.financialIndicator(
@@ -59,7 +73,7 @@ describe("stock", () => {
         end_date: "20250901",
         update_flag: "1",
       },
-      ["ts_code", "ann_date", "end_date", "eps", "dt_eps", "profit_dedt", "update_flag"]
+      ["ts_code", "ann_date", "end_date", "eps", "dt_eps", "profit_dedt", "update_flag"],
     );
     console.log(values);
     expect(values.length).toBeGreaterThan(0);
@@ -116,7 +130,7 @@ describe("stock", () => {
         "continued_net_profit",
         "end_net_profit",
         "update_flag",
-      ]
+      ],
     );
     console.log(values);
     expect(values.length).toBeGreaterThan(0);
