@@ -70,6 +70,7 @@ const values = await tushare.index.basic({
 - [交易日历](https://tushare.pro/document/2?doc_id=26)：可选交易所、日期范围及 `is_open` 筛选，支持返回 `pretrade_date`
 - ETF：基础信息、每日份额规模、日线行情
 - 股票：基础信息、日线、每日指标、资金流向、复权因子、涨跌停价格与财务数据
+- 交易所：各市场板块每日交易统计、融资融券汇总及证券明细
 
 ### 测试用例
 

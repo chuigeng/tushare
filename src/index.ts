@@ -1,11 +1,13 @@
 import Bottleneck from "bottleneck";
 import { Calendar } from "./calendar";
+import { Exchange } from "./exchange";
 import { Fund } from "./fund";
 import { Index } from "./index/index";
 import { Stock } from "./stock";
 
 export * from "./fund";
 export * from "./calendar";
+export * from "./exchange";
 
 export default class TuShare {
   public calendar: Calendar;
@@ -15,6 +17,8 @@ export default class TuShare {
   public stock;
   // 基金与 ETF
   public fund;
+  // 交易所统计
+  public exchange: Exchange;
 
   constructor(token: string, requestsPerMin: number) {
     // 平滑地限制每分钟请求次数
@@ -37,5 +41,6 @@ export default class TuShare {
     this.stock = new Stock(token, limiter);
     this.fund = new Fund(token, limiter);
     this.calendar = new Calendar(token, limiter);
+    this.exchange = new Exchange(token, limiter);
   }
 }
