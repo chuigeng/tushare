@@ -1,20 +1,20 @@
 import API from "../base";
 import { SelectiveResponse } from "../type";
 import {
-    FinancialIndicatorParams,
-    FinancialIndicatorResponse,
-    IncomeParams,
-    IncomeResponse,
-    StockAdjFactorParams,
-    StockAdjFactorResponse,
-    StockBasicParams,
-    StockBasicResponse,
-    StockDailyBasicParams,
-    StockDailyBasicResponse,
-    StockDailyParams,
-    StockDailyResponse,
-    StockLimitParams,
-    StockLimitResponse,
+  FinancialIndicatorParams,
+  FinancialIndicatorResponse,
+  IncomeParams,
+  IncomeResponse,
+  StockAdjFactorParams,
+  StockAdjFactorResponse,
+  StockBasicParams,
+  StockBasicResponse,
+  StockDailyBasicParams,
+  StockDailyBasicResponse,
+  StockDailyParams,
+  StockDailyResponse,
+  StockLimitParams,
+  StockLimitResponse,
 } from "./type";
 
 /**
@@ -27,28 +27,20 @@ export class Stock extends API {
    */
   public async basic<K extends keyof StockBasicResponse>(
     params?: StockBasicParams,
-    fields?: Array<keyof StockBasicResponse>
+    fields?: Array<keyof StockBasicResponse>,
   ): Promise<SelectiveResponse<K, StockBasicResponse>[]> {
-    return await this.get<StockBasicParams, SelectiveResponse<K, StockBasicResponse>>(
-      "stock_basic",
-      params,
-      fields
-    );
+    return await this.get<StockBasicParams, SelectiveResponse<K, StockBasicResponse>>("stock_basic", params, fields);
   }
 
   /**
-   * daily A股日线行情
+   * daily A 股未复权日线行情，停牌期间无行情记录。
    * https://tushare.pro/document/2?doc_id=27
    */
   public async daily<K extends keyof StockDailyResponse>(
     params?: StockDailyParams,
-    fields?: Array<keyof StockDailyResponse>
+    fields?: Array<keyof StockDailyResponse>,
   ): Promise<SelectiveResponse<K, StockDailyResponse>[]> {
-    return await this.get<StockDailyParams, SelectiveResponse<K, StockDailyResponse>>(
-      "daily",
-      params,
-      fields
-    );
+    return await this.get<StockDailyParams, SelectiveResponse<K, StockDailyResponse>>("daily", params, fields);
   }
 
   /**
@@ -57,12 +49,12 @@ export class Stock extends API {
    */
   public async dailyBasic<K extends keyof StockDailyBasicResponse>(
     params?: StockDailyBasicParams,
-    fields?: Array<keyof StockDailyBasicResponse>
+    fields?: Array<keyof StockDailyBasicResponse>,
   ): Promise<SelectiveResponse<K, StockDailyBasicResponse>[]> {
     return await this.get<StockDailyBasicParams, SelectiveResponse<K, StockDailyBasicResponse>>(
       "daily_basic",
       params,
-      fields
+      fields,
     );
   }
 
@@ -72,12 +64,13 @@ export class Stock extends API {
    */
   public async financialIndicator<K extends keyof FinancialIndicatorResponse>(
     params?: FinancialIndicatorParams,
-    fields?: Array<keyof FinancialIndicatorResponse>
+    fields?: Array<keyof FinancialIndicatorResponse>,
   ): Promise<SelectiveResponse<K, FinancialIndicatorResponse>[]> {
-    return await this.get<
-      FinancialIndicatorParams,
-      SelectiveResponse<K, FinancialIndicatorResponse>
-    >("fina_indicator", params, fields);
+    return await this.get<FinancialIndicatorParams, SelectiveResponse<K, FinancialIndicatorResponse>>(
+      "fina_indicator",
+      params,
+      fields,
+    );
   }
 
   /**
@@ -86,15 +79,10 @@ export class Stock extends API {
    */
   public async income<K extends keyof IncomeResponse>(
     params?: IncomeParams,
-    fields?: Array<keyof IncomeResponse>
+    fields?: Array<keyof IncomeResponse>,
   ): Promise<SelectiveResponse<K, IncomeResponse>[]> {
-    return await this.get<IncomeParams, SelectiveResponse<K, IncomeResponse>>(
-      "income",
-      params,
-      fields
-    );
+    return await this.get<IncomeParams, SelectiveResponse<K, IncomeResponse>>("income", params, fields);
   }
-
 
   /**
    * adj_factor 复权因子
@@ -102,12 +90,12 @@ export class Stock extends API {
    */
   public async adjFactor<K extends keyof StockAdjFactorResponse>(
     params?: StockAdjFactorParams,
-    fields?: Array<keyof StockAdjFactorResponse>
+    fields?: Array<keyof StockAdjFactorResponse>,
   ): Promise<SelectiveResponse<K, StockAdjFactorResponse>[]> {
     return await this.get<StockAdjFactorParams, SelectiveResponse<K, StockAdjFactorResponse>>(
       "adj_factor",
       params,
-      fields
+      fields,
     );
   }
 
@@ -117,12 +105,8 @@ export class Stock extends API {
    */
   public async limit<K extends keyof StockLimitResponse>(
     params?: StockLimitParams,
-    fields?: Array<keyof StockLimitResponse>
+    fields?: Array<keyof StockLimitResponse>,
   ): Promise<SelectiveResponse<K, StockLimitResponse>[]> {
-    return await this.get<StockLimitParams, SelectiveResponse<K, StockLimitResponse>>(
-      "stk_limit",
-      params,
-      fields
-    );
+    return await this.get<StockLimitParams, SelectiveResponse<K, StockLimitResponse>>("stk_limit", params, fields);
   }
 }

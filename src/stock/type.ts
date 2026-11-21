@@ -31,8 +31,11 @@ export interface StockBasicResponse {
 // daily
 export interface StockDailyParams {
   ts_code?: string;
+  /** 交易日期（YYYYMMDD），可单独传入以查询当天的全市场行情。 */
   trade_date?: string;
+  /** 开始日期（YYYYMMDD）。 */
   start_date?: string;
+  /** 结束日期（YYYYMMDD）。 */
   end_date?: string;
 }
 
@@ -43,11 +46,19 @@ export interface StockDailyResponse {
   high: number;
   low: number;
   close: number;
+  /** 除权后的昨收价。 */
   pre_close: number;
   change: number;
+  /** 基于除权昨收价计算的涨跌幅（%）。 */
   pct_chg: number;
+  /** 成交量（手）。 */
   vol: number;
+  /** 成交额（千元）。 */
   amount: number;
+  /** 盘后成交量（手），需通过 fields 指定，数据自 2026-07-06 起提供。 */
+  ah_vol?: number | null;
+  /** 盘后成交额（千元），需通过 fields 指定，数据自 2026-07-06 起提供。 */
+  ah_amount?: number | null;
 }
 
 // daily_basic
@@ -693,4 +704,3 @@ export interface StockLimitResponse {
   up_limit: number;
   down_limit: number;
 }
-

@@ -1,6 +1,6 @@
 {
   "name": "@chuizii/tushare",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "packageManager": "pnpm@10.7.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

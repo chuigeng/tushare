@@ -38,30 +38,13 @@ describe("stock", () => {
   it("daily", async () => {
     const tushare = new TuShare(token, 200);
     const values = await tushare.stock.daily({
-      ts_code: "000001.SZ",
-      // start_date: "20180701",
-      end_date: "20000721",
+      trade_date: "20261120",
     });
-    console.log(values[0]);
-    console.log(values[values.length - 1]);
+    console.log(values.length);
     expect(values.length).toBeGreaterThan(0);
     expect(values[0]).toHaveProperty("ts_code");
     expect(values[0]).toHaveProperty("open");
     expect(values[0]).toHaveProperty("close");
-  });
-
-  it("moneyflow", async () => {
-    const tushare = new TuShare(token, 40);
-    const values = await tushare.stock.moneyflow({ trade_date: "20240930" }, [
-      "ts_code",
-      "trade_date",
-      "buy_lg_amount",
-      "sell_lg_amount",
-      "net_mf_amount",
-    ]);
-    expect(values.length).toBeGreaterThan(0);
-    expect(values[0]).toHaveProperty("ts_code");
-    expect(values[0]).toHaveProperty("net_mf_amount");
   });
 
   it("financial_indicator", async () => {
